@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Alert, ScrollView } from "react-native";
 import styled from "styled-components/native";
 
 export default function App() {
@@ -6,8 +7,12 @@ export default function App() {
   const [ taskList, setTaskList] = useState<string[]>([])
 
   const handleAddTask = () => {
-    setTaskList([...taskList, inputContent]);
-    setInputContent("")
+    if (inputContent === "") {
+      Alert.alert("Item vazio", "A tarefa adicionada não pode ser vazia!");
+    } else {
+      setTaskList([...taskList, inputContent]);
+      setInputContent("")
+    }
   }
   
   return (
@@ -24,7 +29,13 @@ export default function App() {
         </AddTaskButton>
       </AddTaskContainer>
 
-      <InputTextResult>{JSON.stringify(taskList)}</InputTextResult>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 40 }}>
+        {
+          taskList.map((item, index) => (
+            <InputTextResult key={index}>Tarefa {index + 1} - {item}</InputTextResult>
+          ))
+        }
+      </ScrollView>
     </Container>
   );
 }
@@ -32,15 +43,15 @@ export default function App() {
 const Container = styled.View`
   flex: 1;
   align-items: center;
-  background-color: #e6e6e6;
-  gap: 12px;
-  padding: 40px 20px 10px;
+  background-color: #212121;
+  gap: 15px;
+  padding: 55px 20px 50px;
 `;
 
 const Title = styled.Text`
   font-size: 30px;
   font-weight: 700;
-  color: #58008f;
+  color: #7700ff;
 `;
 
 const AddTaskContainer = styled.View`
@@ -50,26 +61,31 @@ const AddTaskContainer = styled.View`
 
 const Input = styled.TextInput`
   border-width: 1px;
-  border-color: #58008f;
+  border-color: #e6e6e6;
+  border-radius: 5px;
   padding: 8px;
   flex: 1;
   font-size: 16px;
+  color: #e6e6e6;
 `;
 
 const AddTaskButton = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6
 })`
-  background-color: #58008f;
+  background-color: #7700ff;
   padding: 8px;
+  border-radius: 5px;
 `;
 
 const AddTaskTextButton = styled.Text`
   color: #e6e6e6;
   font-size: 16px;
-`
+  font-weight: 600;
+  `
 
 const InputTextResult = styled.Text`
   font-size: 18px;
   font-weight: 500;
-  color: #58008f;
+  color: #e6e6e6;
+  margin-bottom: 10px;
 `
