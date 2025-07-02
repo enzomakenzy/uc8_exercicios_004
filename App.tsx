@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Alert, ScrollView } from "react-native";
+import AntDesign from '@expo/vector-icons/AntDesign';
 import styled from "styled-components/native";
 
 export default function App() {
@@ -13,6 +14,10 @@ export default function App() {
       setTaskList([...taskList, inputContent]);
       setInputContent("")
     }
+  }
+
+  const handleRemoveTask = (task: string) => {
+    setTaskList(list => list.filter((taskName) => taskName !== task))
   }
   
   return (
@@ -31,8 +36,13 @@ export default function App() {
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 40 }}>
         {
-          taskList.map((item, index) => (
-            <InputTextResult key={index}>Tarefa {index + 1} - {item}</InputTextResult>
+          taskList.map((task, index) => (
+            <TaskContainer key={index}>
+              <Task>{task}</Task>
+              <IconTouch onPress={() => handleRemoveTask(task)}>
+                <CloseIcon name="close" />
+              </IconTouch>
+            </TaskContainer>
           ))
         }
       </ScrollView>
@@ -45,7 +55,7 @@ const Container = styled.View`
   align-items: center;
   background-color: #212121;
   gap: 15px;
-  padding: 55px 20px 50px;
+  padding: 65px 20px 50px;
 `;
 
 const Title = styled.Text`
@@ -81,11 +91,27 @@ const AddTaskTextButton = styled.Text`
   color: #e6e6e6;
   font-size: 16px;
   font-weight: 600;
-  `
+`
 
-const InputTextResult = styled.Text`
+const TaskContainer = styled.View`
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+`
+
+const Task = styled.Text`
   font-size: 18px;
   font-weight: 500;
   color: #e6e6e6;
-  margin-bottom: 10px;
 `
+
+const IconTouch = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6
+})``;
+
+const CloseIcon = styled(AntDesign).attrs({
+  color: "#e6e6e6",
+  size: 30,
+})``;
