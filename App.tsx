@@ -30,10 +30,10 @@ export default function App() {
   
   return (
     <Container>
+      <StatusBar barStyle="light-content" />
       {
         fontsLoaded ?  
           <>
-            <StatusBar barStyle="light-content" />
             <Title>Minhas Tarefas</Title>
             <AddTaskContainer>
               <Input 
