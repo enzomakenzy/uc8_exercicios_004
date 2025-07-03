@@ -4,14 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { ActivityIndicator } from "react-native";
 
-export const Container = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  background-color: #212121;
-  gap: 25px;
-  padding: 0px 20px 50px 20px;
-`;
+
 
 export const Title = styled.Text`
   font-size: 30px;
@@ -87,7 +80,3 @@ export const RemoveTaskIcon = styled(AntDesign).attrs({
   size: 30,
 })``;
 
-export const Loading = styled(ActivityIndicator).attrs({
-  color: "#8c00ff",
-  size: "large"
-})``;
