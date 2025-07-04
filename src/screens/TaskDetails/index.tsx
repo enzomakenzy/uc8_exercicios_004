@@ -1,9 +1,17 @@
-import { Title } from "./styles";
+import { Button, Container, Input, TextButton, Title } from "./styles";
 
 export function TaskDetails() {
   return (
-    <Title>
-      Editar Tarefa
-    </Title>
+    <Container>
+      <Title>
+        Editar Tarefa
+      </Title>
+      <Input multiline={true} />
+      <Button>
+        <TextButton>
+          Salvar
+        </TextButton>
+      </Button>
+    </Container>
   );
 }

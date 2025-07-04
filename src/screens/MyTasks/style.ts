@@ -4,12 +4,13 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 import { SafeAreaView } from "react-native-safe-area-context";
+import { TouchableOpacity } from "react-native";
 
 export const Container = styled(SafeAreaView)`
   flex: 1;
   background-color: #212121;
   gap: 25px;
-  padding: 15px;
+  padding: 25px 15px;
 `;
 
 export const Title = styled.Text`
@@ -62,7 +63,9 @@ export const TasklistTextHeader = styled.Text`
   margin-bottom: 20px;
 `
 
-export const TaskContainer = styled.View`
+export const TaskContainer = styled(TouchableOpacity).attrs({
+  activeOpacity: 0.55
+})`
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
