@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Alert, ScrollView } from "react-native";
 
-import { Title, AddTaskContainer, Input, AddTaskButton, AddTaskIcon, TasklistTextHeader, TasklistEmptyText, TaskContainer, Task, IconTouch, RemoveTaskIcon } from "./style";
+import { Container, Title, AddTaskContainer, Input, AddTaskButton, AddTaskIcon, TasklistTextHeader, TasklistEmptyText, TaskContainer, Task, IconTouch, RemoveTaskIcon } from "./style";
 
 export function MyTasks() {
   const [ inputContent, setInputContent ] = useState("");
@@ -25,7 +25,7 @@ export function MyTasks() {
   }
 
   return (
-    <>
+    <Container>
       <Title>Minhas Tarefas</Title>
       <AddTaskContainer>
         <Input 
@@ -62,6 +62,6 @@ export function MyTasks() {
           ))
         }
       </ScrollView>
-    </>
+    </Container>
   );
 }

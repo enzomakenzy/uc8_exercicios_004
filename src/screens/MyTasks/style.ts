@@ -2,15 +2,21 @@ import styled from "styled-components/native";
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { ActivityIndicator } from "react-native";
 
+import { SafeAreaView } from "react-native-safe-area-context";
 
+export const Container = styled(SafeAreaView)`
+  flex: 1;
+  background-color: #212121;
+  gap: 25px;
+  padding: 15px;
+`;
 
 export const Title = styled.Text`
   font-size: 30px;
   font-family: "Quicksand_700Bold";
   color: #8c00ff;
-  padding-top: 70px;
+  text-align: center;
 `;
 
 export const AddTaskContainer = styled.View`
